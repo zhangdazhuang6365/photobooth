@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Photobooth | 自助拍照</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif;}
+    body {background:#111;color:#fff;line-height:1.6;padding-bottom:80px;}
+
+    .hero {
+      min-height: 100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+      background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)), url("1.jpg") center/cover no-repeat;
+      background-size: cover;
+    }
+    .hero h1 {font-size:2.2rem;margin-bottom:12px;}
+    .hero p {font-size:1rem;opacity:0.9;max-width:340px;}
+    .btn {
+      margin-top:28px;
+      padding:14px 32px;
+      background:#fff;color:#111;
+      text-decoration:none;border-radius:99px;font-weight:bold;
+    }
+
+    section {padding:50px 20px;max-width:600px;margin:0 auto;}
+    section h2 {font-size:1.6rem;margin-bottom:24px;text-align:center;}
+
+    .gallery {
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .gallery img {
+      width:100%;
+      border-radius:10px;
+      display:block;
+      object-fit:cover;
+      cursor:pointer;
+    }
+
+    .about {background:#222;border-radius:16px;padding:24px;margin-top:30px;}
+    .about p {margin-top:12px;opacity:0.9;}
+
+    .contact {text-align:center;margin-top:30px;}
+    .contact a {color:#ffd265;display:block;margin:12px 0;font-size:1.05rem;text-decoration:none;}
+
+    /* 图片放大弹窗 */
+    .lightbox{
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.92);z-index:999;
+      display:none;align-items:center;justify-content:center;padding:20px;
+    }
+    .lightbox img{max-width:100%;max-height:90vh;border-radius:8px;}
+    .lightbox.show{display:flex;}
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Photobooth 自助拍照</h1>
+    <p>复古快照｜即时出片｜市集｜派对｜婚礼｜企业活动移动照相馆</p>
+    <a href="#works" class="btn">查看作品</a>
+  </div>
+
+  <section id="works">
+    <h2>📸 样片展示</h2>
+    <div class="gallery">
+      <img src="2.jpg" alt="photobooth样片" onclick="openImg(this.src)">
+      <img src="3.jpg" alt="photobooth样片" onclick="openImg(this.src)">
+      <img src="4.jpg" alt="photobooth样片" onclick="openImg(this.src)">
+      <img src="5.jpg" alt="photobooth样片" onclick="openImg(this.src)">
+      <img src="6.jpg" alt="photobooth样片" onclick="openImg(this.src)">
+      <img src="7.jpg" alt="photobooth样片" onclick="openImg(this.src)">
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>关于我 & Photobooth</h2>
+    <p>独立移动Photobooth摄影师，主打复古胶片快照，承接市集、婚礼、生日派对、企业活动。</p>
+    <p>自带全套设备、灯光、相纸，现场直出实体照片，氛围感拉满。</p>
+    <p>服务范围：【北京及周边】</p>
+  </section>
+
+  <section class="contact">
+    <h2>📩 预约咨询</h2>
+    <a href="weixin://">微信：1111</a>
+    <a href="#">小红书：222</a>
+    <a href="tel:18515327306">电话：18515327306</a>
+  </section>
+
+  <!-- 大图弹窗 -->
+  <div class="lightbox" onclick="closeImg()">
+    <img id="bigImg" src="">
+  </div>
+
+<script>
+function openImg(src){
+  document.getElementById('bigImg').src=src;
+  document.querySelector('.lightbox').classList.add('show');
+}
+function closeImg(){
+  document.querySelector('.lightbox').classList.remove('show');
+}
+</script>
+</body>
+</html>
